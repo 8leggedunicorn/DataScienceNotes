@@ -1,0 +1,174 @@
+%        File: 
+%     Created: Thu Sep 17 10:00 PM 2015 C
+% Last Change: Thu Sep 17 10:00 PM 2015 C
+%
+\documentclass[11pt,letterpaper,oneside]{memoir}
+\usepackage[margin=2cm]{geometry}
+\usepackage{verbatim}
+\usepackage{thmtools}
+\usepackage{amsthm}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}{Lemma}
+% create environments for definitions and questions
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+
+\usepackage[nogroupskip,acronym]{glossaries}
+\makenoidxglossaries
+\loadglsentries{DataScienceNotesGA}
+\printnoidxglossaries
+%\printacronyms
+\printglossary[type=\acronymtype]
+
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{url}
+\usepackage[svgnames]{xcolor}
+\ifpdf
+  \usepackage{pdfcolmk}
+\fi
+%% check if using xelatex rather than pdflatex
+\ifxetex
+  \usepackage{fontspec}
+\fi
+\usepackage{graphicx}
+\usepackage{hyperref}
+%% drawing package
+\usepackage{tikz}
+%% for dingbats
+\usepackage{pifont}
+\providecommand{\HUGE}{\Huge}% if not using memoir
+\newlength{\drop}% for my convenience
+\newcommand*{\TXfont}[1]{\fontencoding{T1}\fontfamily{#1}\selectfont}
+%% Generic publisher’s logo
+\newcommand*{\plogo}{\fbox{$\mathcal{YW}$}}
+
+\newcommand{\etal}{\textit{et al}.}
+\newcommand{\ie}{\textit{i}.\textit{e}. }
+\newcommand{\eg}{\textit{e}.\textit{g}. }
+
+%% Some shades
+\definecolor{Dark}{gray}{0.2}
+\definecolor{MedDark}{gray}{0.4}
+\definecolor{Medium}{gray}{0.6}
+\definecolor{Light}{gray}{0.8}
+
+\newcommand*{\rotrt}[1]{\rotatebox{90}{#1}}
+\newcommand*{\rotlft}[1]{\rotatebox{-90}{#1}}
+\newcommand*{\topb}{%
+\resizebox*{\unitlength}{\baselineskip}{\rotrt{$\}$}}}
+\newcommand*{\botb}{%
+\resizebox*{\unitlength}{\baselineskip}{\rotlft{$\}$}}}
+\newcommand*{\titleBC}{\begingroup
+\begin{center}
+\def\CP{\textit{\HUGE Data Science Notebook}}
+\settowidth{\unitlength}{\CP}
+{\color{LightGoldenrod}\topb} \\[\baselineskip]
+\textcolor{Sienna}{\CP} \\[\baselineskip]
+{\color{RosyBrown}\LARGE PRINCIPLES OF DATA SCIENCE} \\
+{\color{LightGoldenrod}\botb}
+\end{center}
+\vfill
+\begin{center}
+{\LARGE\textbf{Yigal Weinstein}}\\
+\vfill
+\plogo\\[0.5\baselineskip]
+2016
+\end{center}
+\endgroup}
+\makeindex
+\begin{document}
+\pagestyle{empty}
+\titleBC
+\clearpage
+\chapter*{Prologue}
+There is content that I'm trying to learn in the pursuit of data science. This note book serves the following purposes:
+\begin{enumerate}
+  \item Continuously analyze and synthesize new material as I'm brought into contact with it.  Each chapter is a topic referenced in Zipfian's Data Science Primer \cite{data_science_primer}.
+  \item Have a catalog of what I've studied up until entering into the boot camp.
+  \item Be honest with the quantity and quality of work I've produced.
+\end{enumerate}
+
+\chapter{Machine Learning}
+%\begin{description}
+%  \item[Task]
+%    An abstract representation of a problem we want to solve regarding the domain objects of import.
+%  \item[decision rule]
+%    given an observable random variable $x$ over the probability space  $(\mathcal{x},\sigma, p_\theta)$, determined by a parameter $\theta \in \theta$, and a set a of possible actions, a (deterministic) decision rule is a function $\delta : \mathcal{x} \rightarrow a$.
+%  \item[Domain objects]
+%    Elements of an intuitive model prior to applying machine learning to it, \eg emails in a spam filter, movies in a rating system
+%  \item[Feature representation]
+%    Describe the relevant objects in our domains for use in a machine learning model.
+%  \mdef{Machine learning}{
+%      \item The systematic study of algorithms and systems that improve their knowledge or performance with experience.
+%      \item Using the right features to build the right models that achieve the right tasks
+%      }
+%  \item[Generalization]
+%    being able to use training data as experience to improve on the outcome of a given task
+%  \mdef{Model}{
+%    \item A map from data points to outputs
+%    \item is itself produced as the output of a machine learning algorithm applied to training data
+%    }
+%  \item[Posterior probability]
+%    probability taken after a given feature was observed
+%\end{description}
+\section{Quotes}
+
+``models lend the machine learning field diversity, but tasks and features give it unity.'' \cite[p. 13]{Flach2012}
+Machine learning is all about using the proper algorithms to accomplish the desired \glspl{task}.
+\begin{comment}
+\begin{defn}[Task]
+  \label{defn:task}
+  An abstract representation of a problem we want to solve regarding the domain objects of import.
+\end{defn}
+\end{comment}
+
+\chapter{Python}
+\chapter{SQL}
+\chapter{Probability}
+\chapter{Statistics}
+\chapter{Linear Algebra}
+\printnoidxglossaries
+%\printacronyms
+\bibliography{DataScienceNotes}
+\bibliographystyle{plain}
+\end{document}
+\begin{comment}
+  \item[Model]
+    \mbox{}\\[-1.7\baselineskip]
+    \begin{enumerate}
+      \item A map from data points to outputs
+      \item is itself produced as the output of a machine learning algorithm applied to training data
+
+## Example: SpamAssassin: Spam vs Ham
+
++ Linear Classifier
+* decision rule:
+$\mathbf{w}\cdot\mathbf{x} > t$, where the message is deemed spam if the lhs is greater than the rhs
+* 
+decision boundary (plane): 
+$\mathbf{w}\cdot\mathbf{x} = t$
+separates spam from ham
+* homogeneous equation by addition of constant variable $x_0=1$ where $w_0=-t$, so that the decision rule for example can be written, 
+\begin{equation} 
+  {\mathbf{w}^\circ} \cdot {\mathbf{x}^\circ} > 0 
+\end{equation}
+, where  $\mathbf{w}^\circ = (-t, w_1, w_2, ..., w_n)$ and $\mathbf{x}^\circ = (1, x_1, x_2, ..., x_n)$.
++ Overfitting
+* Over training for too specialized a case
+
+
+# Chapter 1
+
+## Quotes
+
+
+## 1.1 Tasks: the problems that can be solved with machine learning
+
+
+## Models: 
+\begin{thm}
+  just a test
+\end{thm}
+
+\end{comment}
