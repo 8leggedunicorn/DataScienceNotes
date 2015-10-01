@@ -1,0 +1,29 @@
+%% Some shades
+\definecolor{Dark}{gray}{0.2}
+\definecolor{MedDark}{gray}{0.4}
+\definecolor{Medium}{gray}{0.6}
+\definecolor{Light}{gray}{0.8}
+
+\newcommand*{\rotrt}[1]{\rotatebox{90}{#1}}
+\newcommand*{\rotlft}[1]{\rotatebox{-90}{#1}}
+\newcommand*{\topb}{%
+\resizebox*{\unitlength}{\baselineskip}{\rotrt{$\}$}}}
+\newcommand*{\botb}{%
+\resizebox*{\unitlength}{\baselineskip}{\rotlft{$\}$}}}
+\newcommand*{\titleBC}{\begingroup
+\begin{center}
+\def\CP{\textit{\HUGE Data Science Notebook}}
+\settowidth{\unitlength}{\CP}
+{\color{LightGoldenrod}\topb} \\[\baselineskip]
+\textcolor{Sienna}{\CP} \\[\baselineskip]
+{\color{RosyBrown}\LARGE PRINCIPLES OF DATA SCIENCE} \\
+{\color{LightGoldenrod}\botb}
+\end{center}
+\vfill
+\begin{center}
+{\LARGE\textbf{Yigal Weinstein}}\\
+\vfill
+\plogo\\[0.5\baselineskip]
+2016
+\end{center}
+\endgroup}
