@@ -32,11 +32,13 @@
   \usepackage{fontspec}
 \fi
 \usepackage{graphicx}
+\usepackage[]{biblatex}
 \usepackage{hyperref}
 %% drawing package
 \usepackage{tikz}
 %% for dingbats
 \usepackage{pifont}
+\usepackage{csquotes}
 \providecommand{\HUGE}{\Huge}% if not using memoir
 \newlength{\drop}% for my convenience
 \newcommand*{\TXfont}[1]{\fontencoding{T1}\fontfamily{#1}\selectfont}
@@ -47,49 +49,33 @@
 \newcommand{\ie}{\textit{i}.\textit{e}. }
 \newcommand{\eg}{\textit{e}.\textit{g}. }
 
-%% Some shades
-\definecolor{Dark}{gray}{0.2}
-\definecolor{MedDark}{gray}{0.4}
-\definecolor{Medium}{gray}{0.6}
-\definecolor{Light}{gray}{0.8}
-
-\newcommand*{\rotrt}[1]{\rotatebox{90}{#1}}
-\newcommand*{\rotlft}[1]{\rotatebox{-90}{#1}}
-\newcommand*{\topb}{%
-\resizebox*{\unitlength}{\baselineskip}{\rotrt{$\}$}}}
-\newcommand*{\botb}{%
-\resizebox*{\unitlength}{\baselineskip}{\rotlft{$\}$}}}
-\newcommand*{\titleBC}{\begingroup
-\begin{center}
-\def\CP{\textit{\HUGE Data Science Notebook}}
-\settowidth{\unitlength}{\CP}
-{\color{LightGoldenrod}\topb} \\[\baselineskip]
-\textcolor{Sienna}{\CP} \\[\baselineskip]
-{\color{RosyBrown}\LARGE PRINCIPLES OF DATA SCIENCE} \\
-{\color{LightGoldenrod}\botb}
-\end{center}
-\vfill
-\begin{center}
-{\LARGE\textbf{Yigal Weinstein}}\\
-\vfill
-\plogo\\[0.5\baselineskip]
-2016
-\end{center}
-\endgroup}
+\input{title}
 \makeindex
+\addbibresource{DataScienceNotes.bib}
 \begin{document}
 \pagestyle{empty}
 \titleBC
 \clearpage
+\tableofcontents
 \chapter*{Prologue}
-There is content that I'm trying to learn in the pursuit of data science. This note book serves the following purposes:
+There is content that I'm trying to learn in the pursuit of data science. This
+note book serves the following purposes:
 \begin{enumerate}
-  \item Continuously analyze and synthesize new material as I'm brought into contact with it.  Each chapter is a topic referenced in Zipfian's Data Science Primer \cite{data_science_primer}.
-  \item Have a catalog of what I've studied up until entering into the boot camp.
+  \item A log to reflect, analyze synthesize and in general integrate new
+    material as I'm brought into contact with it.  Each chapter is a topic
+    referenced in Zipfian's Data Science Primer \cite{data_science_primer}, or
+    an abstraction - as an example 'Software Development' is used instead of
+    Python programming because there are subcategories of equal importance to
+    me than Python programming, for instance algorithms.
+  \item Have a catalog of what I've studied up until entering into the boot
+    camp.
   \item Be honest with the quantity and quality of work I've produced.
 \end{enumerate}
 
-\chapter{Machine Learning}
+\chapter{Computer Science}
+\section{Algorithms}
+\section{Machine Learning}
+
 %\begin{description}
 %  \item[Task]
 %    An abstract representation of a problem we want to solve regarding the domain objects of import.
@@ -112,10 +98,23 @@ There is content that I'm trying to learn in the pursuit of data science. This n
 %  \item[Posterior probability]
 %    probability taken after a given feature was observed
 %\end{description}
-\section{Quotes}
 
-``models lend the machine learning field diversity, but tasks and features give it unity.'' \cite[p. 13]{Flach2012}
-Machine learning is all about using the proper algorithms to accomplish the desired \glspl{task}.
+\begin{quote}
+  models lend the machine learning field diversity, but tasks and features give
+  it unity. \cite[p. 13]{Flach2012}
+\end{quote}
+
+\begin{quote}
+  Machine learning is all about using the proper algorithms to accomplish the
+  desired \glspl{task}.
+\end{quote}
+
+\begin{quote}
+  A useful rule of thumb is: use likelihoods if you want to ignore the prior
+  distribution or assume it uniform, and posterior probabilities otherwise.
+  \cite[p. 28]{Flach2012} 
+\end{quote}
+
 \begin{comment}
 \begin{defn}[Task]
   \label{defn:task}
@@ -123,15 +122,8 @@ Machine learning is all about using the proper algorithms to accomplish the desi
 \end{defn}
 \end{comment}
 
-\chapter{Coding - Python}
-There is a Pythonic way of coding.  This is a culturally obtained set of standards.  Values are,
-
-\begin{itemize}
-  \item explicit
-  \item choose simple over complex
-  \item maximize readability
-\end{itemize}
-
+\chapter{Software Engineering}
+\section{Good Code}
 LeBlanc's law: Later equals never.
 
 Martin, Robert C. (2008-08-01). Clean Code: A Handbook of Agile Software Craftsmanship (Kindle Location 553). Pearson Education. Kindle Edition. 
@@ -146,15 +138,27 @@ From the introduction it appears there are some qualities that if enough are sat
   \item has a full suite of tests which it passes
 \end{itemize}
 The stress of the authors of \cite{martin2009clean} appear to be making the connection between good and clean code.  What good code is, is still open for debate what the authors provide are behaviors they've learned through their study.  That is read it to learn but don't expect it to contain absolute truth about coding well.
+\section{Python}
+There is a Pythonic way of coding.  This is a culturally obtained set of standards.  Values are,
 
-\chapter{Algorithms}
-\chapter{SQL}
-\chapter{Probability}
-\chapter{Statistics}
-\chapter{Linear Algebra}
+\begin{itemize}
+  \item explicit
+  \item choose simple over complex
+  \item maximize readability
+\end{itemize}
+
+\section{SQL}
+\chapter{Mathematics}
+\section{Probability}
+\section{Statistics}
+\section{Linear Algebra}
+\chapter{Social Sciences}
+As data science is not just the facts, and not only what we do with them, but
+how we communicate them to others the social sciences play a large part in
+succeeding in such a position.  Notable books 
+
 \printnoidxglossaries
 %\printacronyms
-\bibliography{DataScienceNotes}
 \bibliographystyle{plain}
 \end{document}
 Notes to self:
